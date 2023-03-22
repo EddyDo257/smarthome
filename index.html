@@ -1,0 +1,304 @@
+<html>
+
+<head>
+	<title>Smart Home</title>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <script src="justgage/raphael-2.1.4.min.js"></script>
+    <script src="justgage/justgage.js"></script>
+	<link rel="icon" type="image/png" href="smarthome.png"/>
+
+	<!-- Import lib -->
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
+	<link rel="stylesheet" type="text/css" href="fontawesome-free/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+	<!-- End import lib ------------------------------------------------------->
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body class="overlay-scrollbar">
+	
+	<!-- navbar -->
+	<div class="navbar">
+		<!-- nav left -->
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link">
+					<i class="fas fa-bars" onclick="collapseSidebar()"></i>
+				</a>
+			</li>
+			
+		</ul>
+		<!-- end nav left -->
+		<!-- form ------------------------------------------------------------->
+		<form class="navbar-search">
+			<h2><center>Smart Home Prototype</center> </h2>
+		</form>
+		<!-- end form -->
+		<!-- nav right ----------------------------------------------------------->
+		<ul class="navbar-nav nav-right">
+			<li class="nav-item mode">
+				<a class="nav-link" href="#" onclick="switchTheme()">
+					<i class="fas fa-moon dark-icon"></i>
+					<i class="fas fa-sun light-icon"></i>
+				</a>
+			</li>
+			
+				
+			<li class="nav-item avt-wrapper">
+				<div class="avt dropdown">
+					<img src="smarthome.png" alt="User image" class="dropdown-toggle" data-toggle="user-menu">
+					<ul id="user-menu" class="dropdown-menu">
+						<li  class="dropdown-menu-item">
+							<a class="dropdown-menu-link">
+								<div>
+									<i class="fas fa-user-tie"></i>
+								</div>
+								<span>Profile</span>
+							</a>
+						</li>
+						<li class="dropdown-menu-item">
+							<a href="#" class="dropdown-menu-link">
+								<div>
+									<i class="fas fa-cog"></i>
+								</div>
+								<span>Settings</span>
+							</a>
+						</li>
+						<li  class="dropdown-menu-item">
+							<a href="#" class="dropdown-menu-link">
+								<div>
+									<i class="far fa-credit-card"></i>
+								</div>
+								<span>Payments</span>
+							</a>
+						</li>
+						<li  class="dropdown-menu-item">
+							<a href="#" class="dropdown-menu-link">
+								<div>
+									<i class="fas fa-spinner"></i>
+								</div>
+								<span>Projects</span>
+							</a>
+						</li>
+						<li  class="dropdown-menu-item">
+							<a href="#" class="dropdown-menu-link">
+								<div>
+									<i class="fas fa-sign-out-alt"></i>
+								</div>
+								<span>Logout</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+		<!-- end nav right -->
+	</div>
+	<!-- end navbar -->
+	<!-- sidebar ------------------------------------------------------------->
+	<div class="sidebar">
+		<ul class="sidebar-nav">
+			
+			<li class="sidebar-nav-item">
+				<a href="#" class="sidebar-nav-link active">
+					<div>
+						<i class="fab fa-accusoft"></i>
+					</div>
+					<span>Smart Home</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<!-- end sidebar -->
+	<!-- main content ------------------------------------------------------------>
+	<div class="wrapper">
+		<div class="row">
+			<div class="col-3 col-m-3 col-sm-3">
+				<div class="counter bg-primary">
+					<p>
+						<i class="fas fa-tasks"></i>
+					</p>
+					<h1 id="demo46">1</h1>
+
+  				<p>Device ONLINE</p>
+				</div>
+			</div>
+
+	<!-- Main Light on button ------------------------------------------------------------>
+			<div class="col-3 col-m-3 col-sm-3">
+				<div id="light1" class="counter1 bg-light" onclick="Light_on()">
+					<p>
+						<i class="fas fa-lightbulb" style="color: black;"></i>
+					</p>
+					<h1  style="color: black;">ON</h1>
+					<p style="color: black;">Main Light</p>
+				</div>
+			</div>
+
+	<!-- Fan on button ------------------------------------------------------------>
+			<div class="col-3 col-m-3 col-sm-3">
+				<div id="fun1" class="counter1 bg-light" onclick="Fan_on()">
+					<p>
+						<i class="fas fa-fan" style="color: black;"></i>
+					</p>
+					<h1 style="color: black;">ON</h1>
+					<p style="color: black;">Fan </p>
+				</div>
+			</div>
+
+	<!-- Outdoor Light status ------------------------------------------------------------>
+			<div class="col-3 col-m-3 col-sm-3">
+				<div id="door" class="counter bg-light">
+					<p>
+						<i class="fas fa-diagnoses" style="color: black;"></i>
+					
+					</p>
+					<h2 id="Status1" style="color: black;"></h2>
+					<p style="color: black;">Thief Detection</p>
+					<p></p>
+				</div>
+			</div>
+
+	<!-- Offline widget ------------------------------------------------------------>
+			<div class="col-3 col-m-3 col-sm-3">
+				<div class="counter bg-dark">
+					<p>
+						<i class="fas fa-ban" ></i>
+					</p>
+					<h1 id="dzemo31">0</h1>
+					<p style="color: white;">Device OFFLINE</p>
+				</div>
+			</div>
+
+	<!-- Main light off button ------------------------------------------------------------>
+			<div class="col-3 col-m-3 col-sm-3">
+				<div id="light2" class="counter1 bg-light" onclick="Light_off()">
+					<p>
+						<i class="far fa-lightbulb" style="color: black;"></i>
+					</p>
+					<h1 style="color: black;">OFF</h1>
+					<p style="color: black;">Main Light </p>
+				</div>
+			</div>
+
+	<!-- fan off button ------------------------------------------------------------>
+			<div class="col-3 col-m-3 col-sm-3">
+				<div id="fun2" class="counter1 bg-light" onclick="Fan_off()">
+					<p>
+						<i class="fas fa-fan" style="color: black;"></i>
+					</p>
+					<h1  style="color: black;">OFF</h1>
+					<p style="color: black;">Fan </p>
+				</div>
+			</div>
+
+	<!-- Alert status  ------------------------------------------------------------>
+			<div class="col-3 col-m-3 col-sm-3">
+				<div id="security" class="counter bg-light" onclick="click2()">
+					<p>
+						<i class="fas fa-shield-alt" style="color: black;"></i>
+					</p>
+					<h2  id="Status2" style="color: black;"></h2>
+					<p style="color: black;">Alert Status</p>
+				</div>
+			</div>
+
+
+	<!-- Temperature gauge ------------------------------------------------------------>
+			<div class="col-4 col-m-4 col-sm-4">
+				<div id="counter" class="counter" style="background-color:#bbc7f0;">
+					<p>
+						<i class="fas fa-temperature-low" style="color: black;"></i>
+					</p><center>
+					<div id="gauge" style="width:250px; height:200px"></div></center>
+					<p style="color: black;">Temperature</p>
+				</div>
+			</div>
+
+	<!-- Humidity gauge  ------------------------------------------------------------>
+			<div class="col-4 col-m-4 col-sm-4">
+				<div class="counter " style="background-color:#bbc7f0;">
+					<p>
+						<i class="fas fa-tint" style="color: black;"></i>
+					</p><center>
+					<div id="gauge1" style="width:250px; height:200px"></div></center>
+					<p style="color: black;">Humidity</p>
+				</div>
+			</div>
+
+	<!-- Light intesity gauge ------------------------------------------------------------>
+			<div class="col-4 col-m-4 col-sm-4">
+				<div  class="counter" style="background-color:#bbc7f0;">
+					<p>
+						<i class="far fa-lightbulb" style="color: black;"></i>
+					</p>
+					<center>
+					<div id="gauge2" style="width:250px; height:200px"></div></center>
+					<p style="color: black;">Outdoor Light intensity</p>
+				</div>
+			</div>
+			
+		</div>
+
+    <!-- Line chart   --------------------------------------------------------------->
+		
+	<!-- end main content -->
+
+	<!-- import script -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-circle-progress/1.2.0/circle-progress.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	
+
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+
+<!--           Firebase script for connection     -->
+
+<script>
+  
+ const _0x3caa0b=_0x3c29;(function(_0x2d4bfb,_0xbe5c62){const _0x1277f4=_0x3c29,_0x9325a1=_0x2d4bfb();while(!![]){try{const _0x59b22b=-parseInt(_0x1277f4(0x11e))/0x1*(-parseInt(_0x1277f4(0x12c))/0x2)+-parseInt(_0x1277f4(0x12d))/0x3+parseInt(_0x1277f4(0x12e))/0x4*(-parseInt(_0x1277f4(0x126))/0x5)+-parseInt(_0x1277f4(0x11f))/0x6+-parseInt(_0x1277f4(0x12f))/0x7*(parseInt(_0x1277f4(0x128))/0x8)+parseInt(_0x1277f4(0x124))/0x9*(parseInt(_0x1277f4(0x125))/0xa)+-parseInt(_0x1277f4(0x129))/0xb*(-parseInt(_0x1277f4(0x130))/0xc);if(_0x59b22b===_0xbe5c62)break;else _0x9325a1['push'](_0x9325a1['shift']());}catch(_0x3cd879){_0x9325a1['push'](_0x9325a1['shift']());}}}(_0x317d,0x46128));const firebaseConfig={'apiKey':_0x3caa0b(0x123),'authDomain':'smart-82fad.firebaseapp.com','databaseURL':_0x3caa0b(0x122),'projectId':_0x3caa0b(0x11d),'storageBucket':_0x3caa0b(0x12a),'messagingSenderId':_0x3caa0b(0x121),'appId':_0x3caa0b(0x120)};firebase[_0x3caa0b(0x127)](firebaseConfig),firebase[_0x3caa0b(0x12b)]();function _0x3c29(_0x3e30ef,_0x5781ba){const _0x317dec=_0x317d();return _0x3c29=function(_0x3c2937,_0x522ea2){_0x3c2937=_0x3c2937-0x11d;let _0x1fb027=_0x317dec[_0x3c2937];return _0x1fb027;},_0x3c29(_0x3e30ef,_0x5781ba);}function _0x317d(){const _0x388e46=['analytics','2xEfhJY','1219200TCRgyQ','731124FBTLui','34027iVTQbq','30696CcLVok','smart-82fad','318332wBKTtQ','2446272djFBlA','1:429813899534:web:83db24f43c4ebe37a9775f','429813899534','https://smart-82fad-default-rtdb.firebaseio.com','AIzaSyCvoNk6zUj_UZLcYl48zFpwC0CgsoLj760','423OXfHrw','39010QuXdwB','5FyVCJu','initializeApp','64FzdyqV','3531xvrGDN','smart-82fad.appspot.com'];_0x317d=function(){return _0x388e46;};return _0x317d();}
+
+</script>
+
+<!--           Button for turning light and fan on and off by saving to the firebase      -->
+
+
+<script type="text/javascript">
+(function(_0x104e4d,_0x126f60){var _0x2bb92f=_0xc1bb,_0x3eb3a2=_0x104e4d();while(!![]){try{var _0x5eb808=parseInt(_0x2bb92f(0x1cf))/0x1+-parseInt(_0x2bb92f(0x1cc))/0x2+-parseInt(_0x2bb92f(0x1da))/0x3+-parseInt(_0x2bb92f(0x1d5))/0x4+-parseInt(_0x2bb92f(0x1ce))/0x5*(-parseInt(_0x2bb92f(0x1cb))/0x6)+parseInt(_0x2bb92f(0x1d9))/0x7*(parseInt(_0x2bb92f(0x1d7))/0x8)+parseInt(_0x2bb92f(0x1db))/0x9;if(_0x5eb808===_0x126f60)break;else _0x3eb3a2['push'](_0x3eb3a2['shift']());}catch(_0x1ca136){_0x3eb3a2['push'](_0x3eb3a2['shift']());}}}(_0x8622,0xe002c));function Light_on(){var _0x191d06=_0xc1bb,_0x2e4b3e=firebase[_0x191d06(0x1d2)](),_0x521cb2;_0x2e4b3e[_0x191d06(0x1d4)](_0x191d06(0x1d1))[_0x191d06(0x1df)](0x1),document[_0x191d06(0x1d3)](_0x191d06(0x1de))[_0x191d06(0x1c9)][_0x191d06(0x1ca)]=_0x191d06(0x1dc),document['getElementById'](_0x191d06(0x1cd))[_0x191d06(0x1c9)][_0x191d06(0x1ca)]=_0x191d06(0x1d8);}function Light_off(){var _0x3255ca=_0xc1bb,_0x259bee=firebase[_0x3255ca(0x1d2)](),_0x576cad;_0x259bee[_0x3255ca(0x1d4)](_0x3255ca(0x1d1))[_0x3255ca(0x1df)](0x0),document[_0x3255ca(0x1d3)](_0x3255ca(0x1de))[_0x3255ca(0x1c9)][_0x3255ca(0x1ca)]=_0x3255ca(0x1d8),document[_0x3255ca(0x1d3)]('light2')[_0x3255ca(0x1c9)]['background']=_0x3255ca(0x1d6);}function _0x8622(){var _0x4ae1ca=['10DropnK','1101127EVGHiF','fun1','Light','database','getElementById','ref','3132980NObyFs','#eb4d4b','12200FmKrkI','#ffffff','497TgKSpl','3078426lBhCaK','17337654PJEfzA','#6ab04c','Fan','light1','set','style','background','2329098iqDcHG','2370478LMTHXB','light2'];_0x8622=function(){return _0x4ae1ca;};return _0x8622();}function _0xc1bb(_0x224e05,_0x4a020d){var _0x862276=_0x8622();return _0xc1bb=function(_0xc1bbdb,_0x3ec3a0){_0xc1bbdb=_0xc1bbdb-0x1c9;var _0x35b01a=_0x862276[_0xc1bbdb];return _0x35b01a;},_0xc1bb(_0x224e05,_0x4a020d);}function Fan_on(){var _0xf162c2=_0xc1bb,_0x1d637e=firebase[_0xf162c2(0x1d2)](),_0x9d57a6;_0x1d637e[_0xf162c2(0x1d4)](_0xf162c2(0x1dd))[_0xf162c2(0x1df)](0x1),document[_0xf162c2(0x1d3)](_0xf162c2(0x1d0))['style'][_0xf162c2(0x1ca)]=_0xf162c2(0x1dc),document[_0xf162c2(0x1d3)]('fun2')[_0xf162c2(0x1c9)]['background']=_0xf162c2(0x1d8);}function Fan_off(){var _0x202b89=_0xc1bb,_0x19e0fd=firebase['database'](),_0x25e951;_0x19e0fd[_0x202b89(0x1d4)](_0x202b89(0x1dd))[_0x202b89(0x1df)](0x0),document[_0x202b89(0x1d3)]('fun1')[_0x202b89(0x1c9)][_0x202b89(0x1ca)]=_0x202b89(0x1d8),document[_0x202b89(0x1d3)]('fun2')[_0x202b89(0x1c9)]['background']=_0x202b89(0x1d6);}
+</script>
+
+
+<!--           Script for gauges     -->
+
+<script type="text/javascript">
+	var _0x5a2731=_0x9ee2;function _0x9ee2(_0x214fdc,_0x41eb77){var _0x34e7dd=_0x34e7();return _0x9ee2=function(_0x9ee2c,_0x4aa6ee){_0x9ee2c=_0x9ee2c-0x126;var _0x4f8388=_0x34e7dd[_0x9ee2c];return _0x4f8388;},_0x9ee2(_0x214fdc,_0x41eb77);}(function(_0x46afcf,_0x51636b){var _0xa0e232=_0x9ee2,_0x4f8408=_0x46afcf();while(!![]){try{var _0x58fc55=parseInt(_0xa0e232(0x132))/0x1+-parseInt(_0xa0e232(0x126))/0x2+-parseInt(_0xa0e232(0x12c))/0x3+parseInt(_0xa0e232(0x130))/0x4+-parseInt(_0xa0e232(0x12e))/0x5+-parseInt(_0xa0e232(0x12b))/0x6+parseInt(_0xa0e232(0x12d))/0x7*(parseInt(_0xa0e232(0x12a))/0x8);if(_0x58fc55===_0x51636b)break;else _0x4f8408['push'](_0x4f8408['shift']());}catch(_0x3fee0c){_0x4f8408['push'](_0x4f8408['shift']());}}}(_0x34e7,0x6f33b));var g=new JustGage({'id':_0x5a2731(0x129),'value':0x63,'min':0x0,'max':0x64,'title':'','symbol':'℃','decimals':0x1,'pointer':!![],'gaugeWidthScale':0.6,'customSectors':[{'color':_0x5a2731(0x133),'lo':0x32,'hi':0x4b},{'color':'#f7880c','lo':0x0,'hi':0x32},{'color':_0x5a2731(0x128),'lo':0x4c,'hi':0x64}],'counter':!![]}),g1=new JustGage({'id':'gauge1','value':0x16,'min':0x0,'max':0x64,'title':'','symbol':'%','pointer':!![],'pointerOptions':{'toplength':0xa,'bottomlength':0xa,'bottomwidth':0x8,'color':_0x5a2731(0x12f)},'gaugeWidthScale':0.6,'customSectors':[{'color':_0x5a2731(0x131),'lo':0x32,'hi':0x4a},{'color':'#00ff00','lo':0x0,'hi':0x32},{'color':'#f21d1b','lo':0x4b,'hi':0x64}],'counter':!![]}),g2=new JustGage({'id':_0x5a2731(0x127),'value':0xb,'min':0x0,'max':0x64,'donut':!![],'title':'','symbol':'%','pointer':!![],'gaugeWidthScale':0.6,'customSectors':[{'color':_0x5a2731(0x128),'lo':0x32,'hi':0x4b},{'color':'#00ff00','lo':0x0,'hi':0x32},{'color':_0x5a2731(0x133),'lo':0x4c,'hi':0x64}],'counter':!![]});function _0x34e7(){var _0x4c06cf=['#ff0000','1276150CKnijh','gauge2','#f21d1b','gauge','110888TRIPtn','5168676tUauZi','127752jAuBoT','868ytNiQs','849935KbPkTZ','#000','1321448YNYWIw','#f0932b','118449xeMbfL'];_0x34e7=function(){return _0x4c06cf;};return _0x34e7();}
+</script>
+
+
+<!--           Script for setting firebase data into the gauge    -->
+
+
+ <script type="text/javascript">
+
+ 	function _0x26d7(){var _0x1d2760=['#b54549','DHT','5337693EwTtvk','916242PadHHr','#ffffff','283690puqLKq','refresh','25SwYZHy','light1','ajax','Distance','light2','fun1','DETECTION..','https://maker.ifttt.com/trigger/****/json/with/key/oqP73BDBEOcIOpnCz-E67N2V1OOk927S1Xc-3phEq7U','1bIvHpe','child','ACTIVE','innerText','8hjYtbt','#6ab04c','3oLQdYx','val','385qyKFxr','security','fun2','1211120opxJTP','value','Status1','Fan','1943403YGqBkZ','style','12DuMfCO','15983305PkGlPy','Light','background','NO\x20DETECTION','getElementById','#f0932b','679304JjVJSM','ref','door'];_0x26d7=function(){return _0x1d2760;};return _0x26d7();}function _0x522f(_0x4ac705,_0xa25c5){var _0x26d7eb=_0x26d7();return _0x522f=function(_0x522f27,_0x3e0fe6){_0x522f27=_0x522f27-0x10f;var _0x3f5f45=_0x26d7eb[_0x522f27];return _0x3f5f45;},_0x522f(_0x4ac705,_0xa25c5);}(function(_0x46c159,_0x39dd64){var _0x8180d1=_0x522f,_0x24f7c9=_0x46c159();while(!![]){try{var _0x3ceebf=parseInt(_0x8180d1(0x12e))/0x1*(-parseInt(_0x8180d1(0x10f))/0x2)+-parseInt(_0x8180d1(0x134))/0x3*(parseInt(_0x8180d1(0x11c))/0x4)+parseInt(_0x8180d1(0x126))/0x5*(parseInt(_0x8180d1(0x122))/0x6)+-parseInt(_0x8180d1(0x113))/0x7+parseInt(_0x8180d1(0x132))/0x8*(parseInt(_0x8180d1(0x121))/0x9)+-parseInt(_0x8180d1(0x124))/0xa*(parseInt(_0x8180d1(0x136))/0xb)+parseInt(_0x8180d1(0x115))/0xc*(parseInt(_0x8180d1(0x116))/0xd);if(_0x3ceebf===_0x39dd64)break;else _0x24f7c9['push'](_0x24f7c9['shift']());}catch(_0x148372){_0x24f7c9['push'](_0x24f7c9['shift']());}}}(_0x26d7,0x83e07),$(document)['ready'](function(){var _0x773e1c=_0x522f,_0x2c1d33=firebase['database'](),_0x6c3cd1,_0x29962e,_0x2cc2c8,_0x3b6c08,_0x2d0117;_0x2c1d33[_0x773e1c(0x11d)](_0x773e1c(0x120))[_0x773e1c(0x12f)]('Temperature')['on'](_0x773e1c(0x110),function(_0x34af80){var _0x5f0752=_0x773e1c;_0x6c3cd1=_0x34af80['val'](),g[_0x5f0752(0x125)](_0x6c3cd1);}),_0x2c1d33[_0x773e1c(0x11d)](_0x773e1c(0x120))[_0x773e1c(0x12f)]('Humidity')['on'](_0x773e1c(0x110),function(_0xc7d6ea){var _0x4ca84b=_0x773e1c;_0x29962e=_0xc7d6ea[_0x4ca84b(0x135)](),g1[_0x4ca84b(0x125)](_0x29962e);}),_0x2c1d33[_0x773e1c(0x11d)](_0x773e1c(0x129))['on'](_0x773e1c(0x110),function(_0x6d8b2e){var _0x39abf0=_0x773e1c;Distance=_0x6d8b2e[_0x39abf0(0x135)](),Distance<=0xa?($[_0x39abf0(0x128)]({'url':_0x39abf0(0x12d),'success':function(_0x255712){alert(_0x255712);}}),document[_0x39abf0(0x11a)]('Status2')[_0x39abf0(0x131)]=_0x39abf0(0x130),document[_0x39abf0(0x11a)](_0x39abf0(0x137))[_0x39abf0(0x114)]['background']=_0x39abf0(0x11b),document[_0x39abf0(0x11a)](_0x39abf0(0x111))[_0x39abf0(0x131)]=_0x39abf0(0x12c),document[_0x39abf0(0x11a)](_0x39abf0(0x11e))[_0x39abf0(0x114)]['background']=_0x39abf0(0x11b)):(document[_0x39abf0(0x11a)]('Status2')[_0x39abf0(0x131)]='NO\x20ACTIVE',document[_0x39abf0(0x11a)]('security')[_0x39abf0(0x114)][_0x39abf0(0x118)]=_0x39abf0(0x11f),document[_0x39abf0(0x11a)]('Status1')[_0x39abf0(0x131)]=_0x39abf0(0x119),document[_0x39abf0(0x11a)](_0x39abf0(0x11e))[_0x39abf0(0x114)][_0x39abf0(0x118)]=_0x39abf0(0x11f));}),_0x2c1d33[_0x773e1c(0x11d)](_0x773e1c(0x117))['on']('value',function(_0x350839){var _0x129e11=_0x773e1c;_0x2cc2c8=_0x350839['val'](),_0x2cc2c8==0x1?(document[_0x129e11(0x11a)](_0x129e11(0x127))[_0x129e11(0x114)][_0x129e11(0x118)]=_0x129e11(0x133),document[_0x129e11(0x11a)]('light2')[_0x129e11(0x114)][_0x129e11(0x118)]=_0x129e11(0x123)):(document['getElementById'](_0x129e11(0x127))[_0x129e11(0x114)][_0x129e11(0x118)]=_0x129e11(0x123),document[_0x129e11(0x11a)](_0x129e11(0x12a))[_0x129e11(0x114)]['background']='#eb4d4b');}),_0x2c1d33[_0x773e1c(0x11d)](_0x773e1c(0x112))['on'](_0x773e1c(0x110),function(_0xbf1ca2){var _0x2dacaa=_0x773e1c;_0x3b6c08=_0xbf1ca2[_0x2dacaa(0x135)](),_0x3b6c08==0x1?(document['getElementById'](_0x2dacaa(0x12b))[_0x2dacaa(0x114)][_0x2dacaa(0x118)]=_0x2dacaa(0x133),document[_0x2dacaa(0x11a)](_0x2dacaa(0x138))[_0x2dacaa(0x114)][_0x2dacaa(0x118)]=_0x2dacaa(0x123)):(document[_0x2dacaa(0x11a)](_0x2dacaa(0x12b))[_0x2dacaa(0x114)]['background']=_0x2dacaa(0x123),document[_0x2dacaa(0x11a)](_0x2dacaa(0x138))[_0x2dacaa(0x114)]['background']='#eb4d4b');}),_0x2c1d33[_0x773e1c(0x11d)]('outdoor')['on'](_0x773e1c(0x110),function(_0x33711e){var _0x39cf8f=_0x773e1c;_0x2d0117=_0x33711e[_0x39cf8f(0x135)](),g2[_0x39cf8f(0x125)](_0x2d0117);});}));
+ </script>
+
+	<script src="index.js"></script>
+				<!-- javascript -->
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/Chart.min.js"></script>
+		<!-- <script type="text/javascript" src="js/linegraph.js"></script -->
+	<!-- end import script -->
+</body>
+</html>
